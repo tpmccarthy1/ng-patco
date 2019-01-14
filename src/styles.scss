@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+
+// Colors
+$base-font: 'roboto', sans-serif;
+$base-font-color: #333640;
+$base-background: rgb(236, 240, 243);
+$highlight-color: #E1E7EB;
+
+*:focus {
+    outline: none;
+}
+
+body {
+    background-color: $base-background !important;
+    color: $base-font-color;
+}
