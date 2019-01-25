@@ -29,3 +29,24 @@
     font-size: 35px;
 
 }
+
+.footer {
+    color: $base-background;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-image: linear-gradient(260deg, #4B79A1 0%, #283E51 100%); 
+    a {
+        &:link {
+            color: $base-background;
+        }
+        &:visited {
+            color: $base-background;
+        }
+        &:hover {
+            color: $base-background;
+        }
+    }
+}

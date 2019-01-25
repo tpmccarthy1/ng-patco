@@ -13,14 +13,14 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
       state('1',   style({
         'max-height': '25vh',
       })),
-      transition('1 => 0', animate('500ms ease-out')),
+      transition('1 => 0', animate('1000ms ease-out')),
     ]),
   ],
 })
 export class AppComponent {
   title = 'ng-patco';
 
-  isCollapsed: boolean = true; // Boolean to enable bootstrap navbar collapse feature
+  isCollapsed = true; // Boolean to enable bootstrap navbar collapse feature
 
   toggleCollapse() {
     this.isCollapsed = this.isCollapsed ? false : true;

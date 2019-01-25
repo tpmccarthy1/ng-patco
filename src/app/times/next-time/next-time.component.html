@@ -1,1 +1,57 @@
-<h1> Hello </h1>
+<!-- Search form row, hidden when result is showing-->
+<div class="row" [hidden]="!searchMode">
+    <ngx-spinner></ngx-spinner>
+     <div class="col-md-8 offset-md-2">
+            <div class="card text-center search-form">
+                <h3 class="card-title">Get Next Time</h3>
+                <h4 class="card-subtitle mb-2 text-muted">Select your station and a destination below:</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="station">Station: </label>
+                        <select name="station" id="station-select" class="form-control mx-auto" [(ngModel)] = "req.station">
+                            <option *ngFor="let stop of stops" [value]="stop.stopId">{{stop.stopName}}</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="direction">Direction: </label>
+                        <select name="direction" id="direction-select" class="form-control mx-auto" [(ngModel)] = "req.direction">
+                                <option *ngFor="let direction of directions" [value]="direction.dirId">{{direction.direction}}</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" (click)="search()">Get Time</button>
+                </form>
+            </div>
+     </div>
+</div>
+
+<!-- Results container, hidden when search form is showing -->
+<div class="row" [hidden]="searchMode">
+        <div class="list-group col-md-8 mx-md-auto result">
+                <div class="card text-center list-group-item search-form">
+                    <h3 class="card-title">Trains from {{ result.stopName }} heading towards
+                        {{ result.destination }}:</h3>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-3 offset-md-2 text-center text-md-right">
+                                <h3>Next Train:</h3>
+                            </div>
+                            <div class="col-md-6 text-muted">
+                                <h3>{{ result.times[0] }}</h3>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item ml-auto">
+                            <div class="row">
+                                <div class="col-md-3 offset-md-2 text-center text-md-right">
+                                    <h3>Following Train:</h3>
+                                </div>
+                                <div class="col-md-6 text-muted">
+                                    <h3>{{ result.times[1] }}</h3>
+                                </div>
+                            </div>
+                    </li>
+                <br>
+                <button type="submit" class="btn btn-primary" (click)="goBack()">Go back</button>
+            </div>
+        </div>
+</div>

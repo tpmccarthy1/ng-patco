@@ -1,5 +1,5 @@
 <nav class="navbar header-top fixed-top navbar-expand-lg" [@isCollapsed]="isCollapsed">
-    <a class="navbar-brand" href="/">Catch PATCO</a>
+    <a class="navbar-brand" routerLink="/">Catch PATCO</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
       aria-expanded="false" aria-label="Toggle navigation" (click)="toggleCollapse()">
       <span class="fa fa-bars fa-lg hamburger" [hidden]="!isCollapsed" ></span>
@@ -8,15 +8,15 @@
     <div class="collapse navbar-collapse" id="navbarText" [ngbCollapse]="isCollapsed" >
       <ul class="navbar-nav ml-md-auto d-md-flex">
         <li class="nav-item">
-          <a class="nav-link" href="/next">Next Time
-
+          <a class="nav-link" routerLink="/">Next Time
+            <span class="sr-only">(current)</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/search">Search for Time</a>
+          <a class="nav-link" routerLink="/search">Search for Time</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/all">Get All Times</a>
+          <a class="nav-link" routerLink="/all">Get All Times</a>
         </li>
       </ul>
     </div>
@@ -25,3 +25,9 @@
 <div class="router container-fluid">
   <router-outlet></router-outlet>
 </div>
+
+<footer class="footer">
+    <div class="container text-center">
+      <span>Copyright 2019: <a href="http://tmccdev.com">Tom McCarthy</a></span>
+    </div>
+</footer>

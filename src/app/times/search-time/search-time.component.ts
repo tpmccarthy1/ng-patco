@@ -3,18 +3,19 @@ import { TimesService, ITime } from '../times.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
-  selector: 'app-next-time',
-  templateUrl: './next-time.component.html',
-  styleUrls: ['./next-time.component.scss'],
+  selector: 'app-search-time',
+  templateUrl: './search-time.component.html',
+  styleUrls: ['./search-time.component.scss'],
 })
 
-export class NextTimeComponent implements OnInit {
+export class SearchTimeComponent implements OnInit {
 
     stops;
     directions;
     req: {direction: number, station: number, time: string, day: number};
     searchMode: boolean;
     result: ITime = {stopName: '', destination: '', times: ['', '']};
+    minDate: string;
 
     constructor(
         private timesService: TimesService,
@@ -23,6 +24,7 @@ export class NextTimeComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.minDate = new Date().toISOString().substring(0, 16);
         this.searchMode = true;
         this.stops = this.timesService.stops;
         this.directions = this.timesService.directions;
@@ -36,7 +38,8 @@ export class NextTimeComponent implements OnInit {
 
     search() {
         this.spinnerService.show();
-        this.req.time = this.timesService.timeNow(new Date());
+        this.req.day = new Date(this.req.time).getDay();
+        this.req.time = this.timesService.timeNow(new Date(this.req.time));
         this.timesService.getNextTime(this.req).subscribe( (time) => {
         this.result = time;
         this.spinnerService.hide();
